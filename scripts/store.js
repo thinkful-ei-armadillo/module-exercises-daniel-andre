@@ -14,12 +14,7 @@ const store = (function () {
   let searchTerm = '';
 
   let findById = (function (searchId) {
-    console.log(searchId);
-    return items.find( function findId(searchId) {
-      if ( searchId === items.id ) {
-        return items.id === searchId;
-      }
-    } ); 
+    return items.find(item => item.id === searchId);
   });
 
   let addItem = (function (name) {
@@ -60,6 +55,14 @@ const store = (function () {
     items.splice(indexOfObjectFound);
   });
 
+  let toggleCheckedFilter = (function() {
+    this.hideCheckedItems = !this.hideCheckedItems;
+  });
+
+  let setSearchTerm = (function(query) {
+    this.searchTerm = query;
+  });
+
   return {       
     items,
     hideCheckedItems,
@@ -68,7 +71,9 @@ const store = (function () {
     addItem,
     findAndToggleChecked,
     findAndUpdateName,
-    findAndDelete
+    findAndDelete,
+    toggleCheckedFilter,
+    setSearchTerm
   };
 
 } () );
