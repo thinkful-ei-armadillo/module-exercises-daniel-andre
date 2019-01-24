@@ -14,7 +14,12 @@ const store = (function () {
   let searchTerm = '';
 
   let findById = (function (searchId) {
-    items.find( id => { if (searchId === id) {  } });
+    console.log(searchId);
+    return items.find( function findId(searchId) {
+      if ( searchId === items.id ) {
+        return items.id === searchId;
+      }
+    } ); 
   });
 
   let addItem = (function (name) {
@@ -29,7 +34,8 @@ const store = (function () {
 
   let findAndToggleChecked = (function (id) {
     let objectFound = this.findById(id);
-    if ( this.objectFound.checked === true ) {
+    
+    if ( objectFound.checked === true ) {
       objectFound.checked = false;
     }
     else {
